@@ -1,0 +1,8 @@
+# CRUD operations will be implemented here
+from backend.database.db import users_collection
+
+def get_user_by_email(email):
+    return users_collection.find_one({"email": email})
+
+def create_user(user_data):
+    return users_collection.insert_one(user_data)
