@@ -1,22 +1,21 @@
-# LLM integration will be implemented here
 try:
     import requests
 except Exception:
     requests = None
 
 
-OLLAMA_URL = "http://localhost:11434/api/generate"
+OLLAMA_URL = "http://127.0.0.1:11434/api/generate"
 MODEL_NAME = "mistral"
 
 
 def generate_response(prompt: str):
     """
     Generate response using Ollama.
-    Safe fallback if Ollama is unavailable.
+    Returns real error messages while debugging.
     """
 
     if requests is None:
-        return "LLM is not available right now. Please try again later."
+        return "LLM ERROR: requests package is not installed"
 
     payload = {
         "model": MODEL_NAME,
@@ -25,12 +24,12 @@ def generate_response(prompt: str):
     }
 
     try:
-        response = requests.post(OLLAMA_URL, json=payload, timeout=60)
+        response = requests.post(OLLAMA_URL, json=payload, timeout=180)
 
         if response.status_code == 200:
             return response.json().get("response", "").strip()
 
-        return "LLM is unavailable right now."
+        return f"LLM ERROR: status {response.status_code} | {response.text}"
 
-    except Exception:
-        return "LLM is not running yet. Business analysis is available, but AI chat is offline."
+    except Exception as e:
+        return f"LLM ERROR: {str(e)}"
