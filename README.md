@@ -77,7 +77,3 @@ ai-business-copilot/
 9. Chat API
 10. Dashboard API
 11. Streamlit frontend
-
-## License
-
-MIT
