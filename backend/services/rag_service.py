@@ -40,7 +40,7 @@ def build_rag_memory(user_id, analysis):
         print("RAG SKIPPED: no text chunks")
         return
 
-    embeddings = embed_text(text_chunks)
+    embeddings = embed_text(text_chunks, user_id)
     print("RAG EMBEDDINGS COUNT:", len(embeddings))
 
     if not embeddings:

@@ -51,6 +51,7 @@ def login(user: UserAuth):
         "status": "success",
         "access_token": token,
         "user": {
+            "user_id": str(db_user["_id"]),
             "email": db_user["email"]
         }
     }

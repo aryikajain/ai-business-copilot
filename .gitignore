@@ -5,3 +5,6 @@ __pycache__/
 data/uploads/
 data/vectorstores/
 .vscode/
+node_modules
+dist/
+build/

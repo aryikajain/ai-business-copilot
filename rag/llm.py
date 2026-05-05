@@ -5,8 +5,7 @@ except Exception:
 
 
 OLLAMA_URL = "http://127.0.0.1:11434/api/generate"
-MODEL_NAME = "mistral"
-
+MODEL_NAME = "phi3:mini"
 
 def generate_response(prompt: str):
     """
