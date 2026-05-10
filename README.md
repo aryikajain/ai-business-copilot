@@ -19,43 +19,115 @@ A multi-user, full-stack AI system for business data analysis and strategy gener
 
 ## Project Structure
 
-```
+```plaintext
 ai-business-copilot/
-├── backend/                 # FastAPI backend
-│   ├── main.py             # Main FastAPI app
-│   ├── routes/             # API endpoints
-│   │   ├── auth.py         # Authentication routes
-│   │   ├── upload.py       # File upload routes
-│   │   ├── dashboard.py    # Dashboard data routes
-│   │   └── chat.py         # Chat API routes
-│   ├── database/           # Database operations
-│   │   ├── db.py           # MongoDB connection
-│   │   ├── models.py       # Data models
-│   │   └── crud.py         # CRUD operations
-│   └── services/           # Business logic
-│       ├── file_service.py # File handling
-│       ├── processing_service.py # Data processing
-│       ├── rag_service.py  # RAG operations
-│       └── config.py       # Configuration
-├── rag/                    # RAG pipeline components
-│   ├── data_interpreter.py # Data interpretation
-│   ├── embedder.py         # Text embeddings
-│   ├── vector_store.py     # FAISS vector store
-│   ├── retriever.py        # Context retrieval
-│   ├── llm.py              # LLM integration
-│   └── prompts.py          # Prompt templates
-├── models/                 # Business logic models
-│   ├── metrics.py          # Metrics calculation
-│   ├── rules.py            # Business rules engine
-│   └── segmentation.py     # Data segmentation
-├── data/                   # Data storage
-│   ├── uploads/            # User uploaded files
-│   └── vectorstores/       # User vector stores
-├── frontend/               # Streamlit frontend
-│   └── streamlit_app.py    # Main Streamlit app
-└── docs/                   # Documentation
-    └── architecture.pdf    # System architecture
+│
+├── backend/                         # FastAPI Backend
+│   ├── main.py
+│   │
+│   ├── routes/                     # API Routes
+│   │   ├── auth.py
+│   │   ├── upload.py
+│   │   ├── dashboard.py
+│   │   └── chat.py
+│   │
+│   ├── database/                   # Database Layer
+│   │   ├── db.py
+│   │   ├── models.py
+│   │   └── crud.py
+│   │
+│   └── services/                   # Business Logic
+│       ├── file_service.py
+│       ├── processing_service.py
+│       ├── rag_service.py
+│       └── config.py
+│
+├── rag/                            # RAG Pipeline
+│   ├── data_interpreter.py
+│   ├── embedder.py
+│   ├── vector_store.py
+│   ├── retriever.py
+│   ├── llm.py
+│   └── prompts.py
+│
+├── models/                         # Business Intelligence Models
+│   ├── metrics.py
+│   ├── rules.py
+│   └── segmentation.py
+│
+├── data/                           # Storage
+│   ├── uploads/
+│   └── vectorstores/
+│
+├── frontend/                       # React + Vite Frontend
+│   ├── public/
+│   │
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── charts/
+│   │   │   ├── dashboard/
+│   │   │   ├── chat/
+│   │   │   └── ui/
+│   │   │
+│   │   ├── pages/
+│   │   │   ├── Landing.jsx
+│   │   │   ├── Login.jsx
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── Upload.jsx
+│   │   │   └── Chat.jsx
+│   │   │
+│   │   ├── services/
+│   │   │   └── api.js
+│   │   │
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── index.css
+│   │
+│   ├── package.json
+│   ├── vite.config.js
+│   └── tailwind.config.js
+│
+├── docs/
+│   └── architecture.pdf
+│
+├── .gitignore
+├── README.md
+└── requirements.txt
 ```
+# ⚙️ Backend Setup
+
+```bash
+cd backend
+
+pip install -r requirements.txt
+
+uvicorn main:app --reload
+```
+
+Backend runs on:
+
+```plaintext
+http://127.0.0.1:8000
+```
+
+---
+
+# 💻 Frontend Setup
+
+```bash
+cd frontend
+
+npm install
+
+npm run dev
+```
+
+Frontend runs on:
+
+```plaintext
+http://localhost:5173
+```
+---
 
 ## Setup Instructions
 
