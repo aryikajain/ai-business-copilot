@@ -14,7 +14,7 @@ A multi-user, full-stack AI system for business data analysis and strategy gener
 - Backend: FastAPI (Python)
 - Database: MongoDB (local)
 - Vector DB: FAISS
-- LLM: Ollama (Mistral)
+- LLM: Ollama (Mistral/phi3)
 - Frontend: Streamlit
 
 ## Project Structure
@@ -133,7 +133,7 @@ http://localhost:5173
 
 1. Install dependencies (we'll add these as we build)
 2. Set up MongoDB locally
-3. Install Ollama and pull Mistral model
+3. Install Ollama and pull phi3 model
 4. Run the backend and frontend
 
 ## Development Roadmap
