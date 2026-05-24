@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from backend.routes import auth,upload,chat
+from backend.routes import auth,upload,chat,dashboard
 from fastapi.middleware.cors import CORSMiddleware
 
 
@@ -15,6 +15,7 @@ app.add_middleware(
 app.include_router(auth.router, prefix="/auth", tags=["Auth"])
 app.include_router(upload.router, prefix="/upload", tags=["Upload"])
 app.include_router(chat.router, prefix="/chat", tags=["Chat"])
+app.include_router( dashboard.router,prefix="/dashboard",tags=["Dashboard"])
 @app.get("/")
 def root():
     return {"msg": "AI Business Copilot running"}

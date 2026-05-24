@@ -27,7 +27,7 @@ export default function Chat() {
     try {
       setLoading(true);
 
-      const response = await API.post("/chat", {
+      const response = await API.post("/chat/", {
         user_id,
         query: currentQuery,
       });

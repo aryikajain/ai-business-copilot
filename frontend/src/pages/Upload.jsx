@@ -11,6 +11,24 @@ export default function Upload() {
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  const handleFileChange = (event) => {
+    const selectedFile = event.target.files?.[0];
+
+    if (!selectedFile) {
+      setFile(null);
+      return;
+    }
+
+    if (!selectedFile.name.toLowerCase().endsWith(".csv")) {
+      alert("Please choose a CSV file");
+      event.target.value = "";
+      setFile(null);
+      return;
+    }
+
+    setFile(selectedFile);
+  };
+
   const handleUpload = async () => {
     if (!file) {
       alert("Please select a CSV file");
@@ -25,7 +43,7 @@ export default function Upload() {
     try {
       setLoading(true);
 
-      const response = await API.post("/upload", formData, {
+      const response = await API.post("/upload/", formData, {
         params: { token },
         headers: {
           "Content-Type": "multipart/form-data",
@@ -69,14 +87,16 @@ export default function Upload() {
             </p>
           </div>
 
-          {/* Upload Box */}
-          <div className="border-2 border-dashed border-gray-300 rounded-3xl p-10 text-center bg-slate-50">
-
+          <label
+            htmlFor="csv-upload"
+            className="block border-2 border-dashed border-gray-300 rounded-3xl p-10 text-center bg-slate-50 cursor-pointer hover:border-blue-400 hover:bg-blue-50 transition-colors"
+          >
             <input
+              id="csv-upload"
               type="file"
-              accept=".csv"
-              onChange={(e) => setFile(e.target.files[0])}
-              className="mb-6"
+              accept=".csv,text/csv"
+              onChange={handleFileChange}
+              className="sr-only"
             />
 
             {!file ? (
@@ -87,7 +107,7 @@ export default function Upload() {
                 />
 
                 <p className="text-gray-600">
-                  Select a CSV file to begin analysis
+                  Click to select a CSV file
                 </p>
               </>
             ) : (
@@ -106,7 +126,7 @@ export default function Upload() {
                 </p>
               </>
             )}
-          </div>
+          </label>
 
           {/* Button */}
           <button

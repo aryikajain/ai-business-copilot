@@ -1,32 +1,43 @@
-# Prompts will be implemented here
 def build_business_prompt(context, user_query):
+
     """
-    Build a grounded business strategy prompt
+    Build grounded business strategy prompt
     """
 
-    context_text = "\n".join(context) if context else "No prior business context available."
+    context_text = (
+        "\n".join(context)
+        if context
+        else "No business context available."
+    )
 
     prompt = f"""
-You are an AI Business Copilot.
+You are an AI Business Copilot. Use only the business context below.
 
-Your role is to act like a business strategist and marketing advisor.
+==============================
+BUSINESS CONTEXT
+==============================
 
-Use the business context below to answer the user's question with practical, specific, business-focused advice.
-
-Business Context:
 {context_text}
 
-User Question:
+==============================
+USER QUESTION
+==============================
+
 {user_query}
 
-Instructions:
-- Be concise but useful
-- Give actionable business advice
-- Focus on revenue, marketing, customers, and growth
-- Do not make up fake metrics
-- Use the provided business context
-- If context is limited, say so and give the best possible strategic advice
+==============================
+RESPONSE RULES
+==============================
 
-Answer:
+1. Do not invent metrics.
+2. Keep the answer under 160 words.
+3. Use short bullets.
+4. If context is limited, say that briefly.
+5. End with one best next action.
+
+==============================
+ANSWER
+==============================
 """
+
     return prompt
